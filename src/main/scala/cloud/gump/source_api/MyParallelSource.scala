@@ -2,12 +2,12 @@ package cloud.gump.source_api
 
 import cloud.gump.source_api.FromElem.Event
 import cloud.gump.source_api.MyParallelSource.flag
-import org.apache.flink.streaming.api.functions.source.SourceFunction
+import org.apache.flink.streaming.api.functions.source.{ParallelSourceFunction, SourceFunction}
 
 import java.util.Calendar
 import scala.util.Random
 
-class MySource extends SourceFunction[Event]{
+class MyParallelSource extends ParallelSourceFunction[Event]{
 
   override def run(ctx: SourceFunction.SourceContext[Event]): Unit = {
     val random = new Random()
@@ -24,6 +24,6 @@ class MySource extends SourceFunction[Event]{
   }
 }
 
-object MySource{
+object MyParallelSource{
   var flag = true
 }
